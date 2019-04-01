@@ -15,58 +15,165 @@
             position: relative;
             transform-style: preserve-3d;
             transform-origin: 50% 50% -100px;
+            transform: rotateX(0deg) rotateY(0deg);
         }
         .box{
             width: 200px;
             height: 200px;
             position: absolute;
-            text-align: center;
-            line-height: 200px;
-            font-size: 25px;
-            font-weight: 600;
-            transform: perspective(200px);
+            opacity: 0.5;
+            transition-property: transform;
+            transition-duration: .3s;
+            transition-timing-function: linear;
         }
         .box1{
-            background-color: rgba(200, 200, 200, .5);
+            background-image: url("./images/img1.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
         }
         .box2{
-            background-color: rgba(0, 200, 0, .5);
+            background-image: url("./images/img.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
             top: -200px;
             transform: rotateX(90deg);
             transform-origin: bottom;
         }
         .box3{
-            background-color: rgba(200, 100, 0, .5);
+            background-image: url("./images/img3.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
             left: -200px;
             transform: rotateY(-90deg);
             transform-origin: right;
         }
         .box4{
-            background-color: rgba(200, 255, 0, .5);
+            background-image: url("./images/img4.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
             bottom: -200px;
             transform: rotateX(-90deg);
             transform-origin: top;
         }
         .box5{
-            background-color: rgba(255, 255, 0, .5);
+            background-image: url("./images/img5.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
             right: -200px;
             transform: rotateY(90deg);
             transform-origin: left;
         }
         .box6{
-            background-color: rgba(0, 255, 255, .5);
+            background-image: url("./images/img6.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
             transform: translateZ(-200px);
+        }
+        .inter{
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            text-align: center;
+            font-size: 25px;
+            font-weight: bold;
+            line-height: 60px;
+            transition: all 2s linear;
+            opacity: 0.5;
+            left: 70px;
+            top: 70px;
+        }
+        .inter1{
+            background-image: url("./images/timg.gif");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            transform: translateZ(-130px);
+        }
+        .inter2{
+            background-image: url("./images/timg.gif");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            transform: translateZ(-70px) rotateX(-90deg);
+            transform-origin: top;
+        }
+        .inter3{
+            background-image: url("./images/timg.gif");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            transform: translateZ(-70px) rotateY(-90deg);
+            transform-origin: right;
+        }
+        .inter4{
+            background-image: url("./images/timg.gif");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            transform: translateZ(-70px) rotateX(90deg);
+            transform-origin: bottom;
+        }
+        .inter5{
+            background-image: url("./images/timg.gif");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            transform: translateZ(-70px) rotateY(90deg);
+            transform-origin: left;
+        }
+        .inter6{
+            background-image: url("./images/timg.gif");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            transform: translateZ(-70px);
+        }
+        #warp:hover>.box1{
+            transform: translateZ(60px);
+        }
+        #warp:hover>.box2{
+            transform: translateY(-60px) rotateX(90deg);
+        }
+        #warp:hover>.box3{
+            transform: translateX(-70px) rotateY(-90deg);
+        }
+        #warp:hover>.box4{
+            transform: translateY(60px) rotateX(-90deg);
+        }
+        #warp:hover>.box5{
+            transform: translateX(60px) rotateY(90deg);
+        }
+        #warp:hover>.box6{
+            transform: translateZ(-260px);
+        }
+        #warp:hover>.inter1{
+            transform: translateZ(-160px);
+        }
+        #warp:hover>.inter2{
+            transform: translateZ(-70px) translateY(-30px) rotateX(-90deg);
+        }
+        #warp:hover>.inter3{
+            transform: translateZ(-70px) translateX(30px) rotateY(-90deg);
+        }
+        #warp:hover>.inter4{
+            transform: translateZ(-70px) translateY(30px) rotateX(90deg);
+        }
+        #warp:hover>.inter5{
+            transform: translateZ(-70px) translateX(-30px) rotateY(90deg);
+        }
+        #warp:hover>.inter6{
+            transform: translateZ(-40px);
         }
     </style>
 </head>
 <body>
     <div id="warp">
-        <div class="box box1">1</div>
-        <div class="box box2">2</div>
-        <div class="box box3">3</div>
-        <div class="box box4">4</div>
-        <div class="box box5">5</div>
-        <div class="box box6">6</div>
+        <div class="box box1"></div>
+        <div class="box box2"></div>
+        <div class="box box3"></div>
+        <div class="box box4"></div>
+        <div class="box box5"></div>
+        <div class="box box6"></div>
+        <div class="inter inter1"></div>
+        <div class="inter inter2"></div>
+        <div class="inter inter3"></div>
+        <div class="inter inter4"></div>
+        <div class="inter inter5"></div>
+        <div class="inter inter6"></div>
     </div>
 
     <div id="div0">
@@ -78,7 +185,7 @@
             setInterval(function () {
                 warp.style.transform = 'rotateX('+deg+'deg) rotateY('+deg+'deg)';
                 deg++;
-            }, 10);
+            }, 20);
             /*
             * 技术要点学会使用3D动画
             * 1、使用position定位
