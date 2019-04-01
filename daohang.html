@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #warp{
+            width: 200px;
+            height: 200px;
+            margin: 230px auto;
+            position: relative;
+            transform-style: preserve-3d;
+            transform-origin: 50% 50% -100px;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            text-align: center;
+            line-height: 200px;
+            font-size: 25px;
+            font-weight: 600;
+            transform: perspective(200px);
+        }
+        .box1{
+            background-color: rgba(200, 200, 200, .5);
+        }
+        .box2{
+            background-color: rgba(0, 200, 0, .5);
+            top: -200px;
+            transform: rotateX(90deg);
+            transform-origin: bottom;
+        }
+        .box3{
+            background-color: rgba(200, 100, 0, .5);
+            left: -200px;
+            transform: rotateY(-90deg);
+            transform-origin: right;
+        }
+        .box4{
+            background-color: rgba(200, 255, 0, .5);
+            bottom: -200px;
+            transform: rotateX(-90deg);
+            transform-origin: top;
+        }
+        .box5{
+            background-color: rgba(255, 255, 0, .5);
+            right: -200px;
+            transform: rotateY(90deg);
+            transform-origin: left;
+        }
+        .box6{
+            background-color: rgba(0, 255, 255, .5);
+            transform: translateZ(-200px);
+        }
+    </style>
+</head>
+<body>
+    <div id="warp">
+        <div class="box box1">1</div>
+        <div class="box box2">2</div>
+        <div class="box box3">3</div>
+        <div class="box box4">4</div>
+        <div class="box box5">5</div>
+        <div class="box box6">6</div>
+    </div>
+
+    <div id="div0">
+        <div id="div1"></div>
+    </div>
+    <script>
+            var warp = document.getElementById("warp");
+            var deg = 0;
+            setInterval(function () {
+                warp.style.transform = 'rotateX('+deg+'deg) rotateY('+deg+'deg)';
+                deg++;
+            }, 10);
+            /*
+            * 技术要点学会使用3D动画
+            * 1、使用position定位
+            * 2、使用3D旋转transform: rotateX(负/正值) 正值时左上角基于屏幕向里走 负值则相反
+            *                   rotateY(负/正值) 正值时左上角基于屏幕向外走 负值则相反
+            *                   rotateZ(负/正值) 正值时逆时针旋转 负值相反
+            * 3、使用3D基点变换transform-origin: top; 相当于 x轴50% y轴0% z轴0px
+            *                                    left;相当于 x轴0% y轴50% z轴0px
+            *                                    right;相当于 x轴100% y轴0% z轴0px
+            *                                    bottom; 相当于 x轴0% y轴100% z轴0px
+            *                                    确定基点的位置根据需求自行调节
+            * */
+    </script>
+</body>
+</html>
